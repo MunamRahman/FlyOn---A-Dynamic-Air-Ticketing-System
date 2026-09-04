@@ -1,0 +1,16 @@
+# Simplified .htaccess for FlyOn
+# If the main .htaccess causes issues, use this simpler version
+
+# Disable directory listing
+Options -Indexes
+
+# Allow PHP files
+<FilesMatch "\.php$">
+    Require all granted
+</FilesMatch
+
+# Protect sensitive files
+<FilesMatch "\.(env|log|ini|sql|md)$">
+    Require all denied
+</FilesMatch>
+

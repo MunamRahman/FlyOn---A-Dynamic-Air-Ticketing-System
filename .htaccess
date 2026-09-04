@@ -1,0 +1,43 @@
+# FlyOn .htaccess Configuration
+# Simplified version for better compatibility
+
+# Disable directory listing
+Options -Indexes
+
+# Enable Rewrite Engine (if available)
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /FlyOn/
+    
+    # Block direct access to .env file
+    RewriteRule ^\.env$ - [F,L]
+    
+    # Block direct access to config.php
+    RewriteCond %{THE_REQUEST} \s+config\.php[\s?] [NC]
+    RewriteRule ^ - [F,L]
+</IfModule>
+
+# Security Headers (if mod_headers is available)
+<IfModule mod_headers.c>
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-XSS-Protection "1; mode=block"
+    Header set X-Content-Type-Options "nosniff"
+</IfModule>
+
+# Protect sensitive files
+<FilesMatch "\.(env|log|ini|sql|md)$">
+    Require all denied
+</FilesMatch>
+
+# PHP Settings (if mod_php is available)
+<IfModule mod_php.c>
+    php_value upload_max_filesize 10M
+    php_value post_max_size 10M
+    php_value max_execution_time 300
+    php_value max_input_time 300
+</IfModule>
+
+# Custom Error Pages
+ErrorDocument 404 /FlyOn/404.php
+ErrorDocument 403 /FlyOn/403.php
+ErrorDocument 500 /FlyOn/500.php
