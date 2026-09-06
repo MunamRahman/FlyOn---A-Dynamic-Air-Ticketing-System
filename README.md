@@ -1,96 +1,108 @@
-#<div align="center">
+<div align="center">
 
 <img src="assets/image/FlyOn3.png" alt="FlyOn Logo" width="220"/>
 
-✈️ FlyOn
-A Dynamic Air Ticketing & Flight Booking System
+# ✈️ FlyOn
 
-Search smarter. Book faster. Fly better.
+### A Dynamic Air Ticketing & Flight Booking System
 
-A full-featured web-based airline reservation platform built with PHP, MySQL, Tailwind CSS, and JavaScript, designed to provide an end-to-end flight booking experience with dynamic pricing, seat selection, promotions, loyalty rewards, administrative controls, REST-style APIs, and flight-data synchronization capabilities.
+**Search smarter. Book faster. Fly better.**
 
+A full-featured web-based airline reservation platform built with **PHP, MySQL, Tailwind CSS, and JavaScript**, designed to provide an end-to-end flight booking experience with dynamic pricing, seat selection, promotions, loyalty rewards, administrative controls, REST-style APIs, and flight-data synchronization capabilities.
 
+[![PHP](https://img.shields.io/badge/PHP-Backend-777BB4?logo=php\&logoColor=white)](https://www.php.net/)
+[![MySQL](https://img.shields.io/badge/MySQL-Database-4479A1?logo=mysql\&logoColor=white)](https://www.mysql.com/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-Frontend-06B6D4?logo=tailwindcss\&logoColor=white)](https://tailwindcss.com/)
+[![JavaScript](https://img.shields.io/badge/JavaScript-Interactive_UI-F7DF1E?logo=javascript\&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![Font Awesome](https://img.shields.io/badge/Font_Awesome-Icons-528DD7?logo=fontawesome\&logoColor=white)](https://fontawesome.com/)
+[![License](https://img.shields.io/badge/License-Not_Specified-lightgrey)](#-license)
 
-
-
-
-
-
-
-Features •
-Architecture •
-Installation •
-Database •
-API •
-Booking Flow
+[Features](#-key-features) •
+[Architecture](#-system-architecture) •
+[Installation](#-installation--setup) •
+[Database](#-database-design) •
+[API](#-api-overview) •
+[Booking Flow](#-booking-workflow)
 
 </div>
 
-📖 About FlyOn
+---
 
-FlyOn is a dynamic air-ticketing system that simulates the workflow of a modern online travel and airline reservation platform.
+## 📖 About FlyOn
+
+**FlyOn** is a dynamic air-ticketing system that simulates the workflow of a modern online travel and airline reservation platform.
 
 Rather than functioning as a simple flight-listing website, FlyOn brings together the major components required by a real booking system:
 
-flight discovery
-dynamic ticket pricing
-passenger information management
-seat allocation
-optional add-ons
-promotional discounts
-payment processing workflow
-booking management
-loyalty rewards
-user reviews
-administrative operations
-flight-data synchronization
+* flight discovery
+* dynamic ticket pricing
+* passenger information management
+* seat allocation
+* optional add-ons
+* promotional discounts
+* payment processing workflow
+* booking management
+* loyalty rewards
+* user reviews
+* administrative operations
+* flight-data synchronization
 
-The project is especially focused on the Bangladesh aviation market, with sample routes, airlines, airports, currency formatting, timezone configuration, and payment architecture suitable for a Bangladesh-oriented travel platform.
+The project is especially focused on the **Bangladesh aviation market**, with sample routes, airlines, airports, currency formatting, timezone configuration, and payment architecture suitable for a Bangladesh-oriented travel platform.
 
-✨ Key Features
-🔍 Intelligent Flight Search
+---
+
+# ✨ Key Features
+
+## 🔍 Intelligent Flight Search
 
 Users can search available flights by:
 
-departure city
-destination city
-departure date
-return date
-number of passengers
-travel class
+* departure city
+* destination city
+* departure date
+* return date
+* number of passengers
+* travel class
 
 FlyOn retrieves matching scheduled flights from the database and provides information such as:
 
-airline
-flight number
-departure airport
-arrival airport
-departure time
-arrival time
-flight duration
-seat availability
-calculated ticket price
+* airline
+* flight number
+* departure airport
+* arrival airport
+* departure time
+* arrival time
+* flight duration
+* seat availability
+* calculated ticket price
 
 The search system also tracks how frequently flights are searched, allowing demand to influence dynamic pricing.
 
-💸 Dynamic Ticket Pricing
+---
 
-One of FlyOn's key features is its built-in dynamic pricing engine.
+## 💸 Dynamic Ticket Pricing
+
+One of FlyOn's key features is its built-in **dynamic pricing engine**.
 
 Ticket prices can automatically adjust based on active pricing rules.
 
-Supported pricing strategies
-Strategy	Example Behavior
-⏰ Time-Based Pricing	Price increases when departure is very close
-💺 Seat-Based Pricing	Price increases as available seats become scarce
-📈 Demand-Based Pricing	Frequently searched flights can become more expensive
+### Supported pricing strategies
+
+| Strategy                | Example Behavior                                      |
+| ----------------------- | ----------------------------------------------------- |
+| ⏰ Time-Based Pricing    | Price increases when departure is very close          |
+| 💺 Seat-Based Pricing   | Price increases as available seats become scarce      |
+| 📈 Demand-Based Pricing | Frequently searched flights can become more expensive |
 
 Pricing rules are stored in the database rather than being permanently hard-coded into the booking interface, making the system extensible.
 
-🧳 Complete Multi-Step Booking Experience
+---
+
+# 🧳 Complete Multi-Step Booking Experience
 
 FlyOn provides a structured five-stage booking workflow.
 
+```text
 Flight Search
      ↓
 Passenger Information
@@ -102,96 +114,111 @@ Add-ons & Promotions
 Payment
      ↓
 Booking Confirmation
-Step 1 — Passenger Information
+```
+
+### Step 1 — Passenger Information
 
 Collect and manage passenger details including:
 
-title
-first and last name
-date of birth
-gender
-passport information
-Step 2 — Seat Selection
+* title
+* first and last name
+* date of birth
+* gender
+* passport information
+
+### Step 2 — Seat Selection
 
 Passengers can choose seats for their selected flight.
 
 The database supports:
 
-Economy
-Business
-First Class
+* Economy
+* Business
+* First Class
 
 Seats can have the following states:
 
+```text
 Available → Locked → Booked
+```
 
 Temporary seat locking is supported in the system configuration to reduce the possibility of simultaneous users selecting the same seat during a booking session.
 
-Step 3 — Add-ons & Promotions
+### Step 3 — Add-ons & Promotions
 
 The booking engine supports additional charges and promotional discounts.
 
 Promo codes may apply either:
 
-percentage discounts
-fixed-amount discounts
+* percentage discounts
+* fixed-amount discounts
 
 Promotions also contain validity periods and active/inactive states.
 
-Step 4 — Payment
+### Step 4 — Payment
 
 FlyOn contains payment architecture for:
 
-🇧🇩 SSLCommerz
-💳 Stripe
-🌐 PayPal
-💵 Cash
+* 🇧🇩 SSLCommerz
+* 💳 Stripe
+* 🌐 PayPal
+* 💵 Cash
 
-Development Note:
-The current SSLCommerz, Stripe, and PayPal handlers are integration-ready placeholders that generate simulated transaction IDs after configuration checks. Production deployments should replace these handlers with the official payment-provider SDKs/APIs and server-side payment verification.
+> **Development Note:**
+> The current SSLCommerz, Stripe, and PayPal handlers are integration-ready placeholders that generate simulated transaction IDs after configuration checks. Production deployments should replace these handlers with the official payment-provider SDKs/APIs and server-side payment verification.
 
-Step 5 — Confirmation
+### Step 5 — Confirmation
 
 After the booking process is completed, the system can provide:
 
-unique booking reference
-booking information
-flight details
-payment state
-confirmation information
-👤 User System
+* unique booking reference
+* booking information
+* flight details
+* payment state
+* confirmation information
+
+---
+
+# 👤 User System
 
 FlyOn includes a complete user-facing account system.
 
-Authentication
+## Authentication
 
 Users can:
 
-register
-log in
-log out
-maintain account sessions
-edit profile information
+* register
+* log in
+* log out
+* maintain account sessions
+* edit profile information
 
 Passwords are hashed using PHP's password hashing API.
 
-User Dashboard
+---
+
+## User Dashboard
 
 Registered users have access to their own dashboard where they can manage personal travel activity.
 
 Features include:
 
-booking history
-booking details
-booking cancellation
-profile management
-loyalty information
-flight ratings and reviews
-🎁 Loyalty Program
+* booking history
+* booking details
+* booking cancellation
+* profile management
+* loyalty information
+* flight ratings and reviews
+
+---
+
+## 🎁 Loyalty Program
 
 FlyOn contains a tier-based loyalty system.
 
-Loyalty tiers
+### Loyalty tiers
+
+```text
 🥉 Bronze
     ↓
 🥈 Silver
@@ -199,75 +226,90 @@ Loyalty tiers
 🥇 Gold
     ↓
 💎 Platinum
+```
 
 The loyalty architecture supports:
 
-reward points
-available points
-total points
-membership tiers
-referral codes
+* reward points
+* available points
+* total points
+* membership tiers
+* referral codes
 
 Tier thresholds and point calculations are configurable from the application configuration.
 
-⭐ Flight Rating System
+---
+
+## ⭐ Flight Rating System
 
 Users can submit ratings for completed booking experiences.
 
 The database supports:
 
-ratings from 1–5
-written reviews
-one review per booking
-average flight rating
-total review count
+* ratings from 1–5
+* written reviews
+* one review per booking
+* average flight rating
+* total review count
 
 This enables flight quality and passenger feedback to become part of the platform.
 
-🛡️ Admin Panel
+---
+
+# 🛡️ Admin Panel
 
 FlyOn contains a dedicated administrative environment separated from normal user functionality.
 
 Administrators can perform operations including:
 
-✈️ Flight Management
-view flights
-add flights
-configure flight schedules
-cancel flights
-manage flight inventory
-💺 Seat Management
-create seats
-configure seat classes
-inspect seat availability
-📚 Booking Management
+### ✈️ Flight Management
+
+* view flights
+* add flights
+* configure flight schedules
+* cancel flights
+* manage flight inventory
+
+### 💺 Seat Management
+
+* create seats
+* configure seat classes
+* inspect seat availability
+
+### 📚 Booking Management
 
 Administrators can:
 
-view customer bookings
-approve bookings
-reject bookings
-inspect booking activity
-🎟️ Promotion Management
-create promotional campaigns
-configure discount type
-configure discount amount
-configure validity periods
-enable/disable promotions
-👥 User Management
+* view customer bookings
+* approve bookings
+* reject bookings
+* inspect booking activity
+
+### 🎟️ Promotion Management
+
+* create promotional campaigns
+* configure discount type
+* configure discount amount
+* configure validity periods
+* enable/disable promotions
+
+### 👥 User Management
 
 Administrators can inspect and manage registered platform users.
 
-🔄 Flight Synchronization
+### 🔄 Flight Synchronization
 
 Administrators also have access to flight-data synchronization functionality through the GoZayaan integration module.
 
-🌐 GoZayaan Flight Data Integration
+---
 
-FlyOn contains an integration layer designed to keep local flight information synchronized with external data from GoZayaan.
+# 🌐 GoZayaan Flight Data Integration
+
+FlyOn contains an integration layer designed to keep local flight information synchronized with external data from **GoZayaan**.
 
 The synchronization system supports two approaches:
 
+```text
                      ┌─────────────────────┐
                      │   FlyOn Database    │
                      └──────────┬──────────┘
@@ -278,114 +320,143 @@ The synchronization system supports two approaches:
                 │                               │
          GoZayaan API                    Web Extraction
         (Preferred Method)               (Fallback Design)
-Supported synchronization functionality
-synchronize individual flights
-synchronize upcoming flights
-compare flight information
-update changed flight schedules
-store synchronization logs
-perform manual synchronization
-schedule automatic synchronization
-limit requests between synchronization calls
+```
+
+## Supported synchronization functionality
+
+* synchronize individual flights
+* synchronize upcoming flights
+* compare flight information
+* update changed flight schedules
+* store synchronization logs
+* perform manual synchronization
+* schedule automatic synchronization
+* limit requests between synchronization calls
 
 A cron script is included for scheduled synchronization.
 
-Important: The HTML extraction implementation is currently a template and its selectors must be adjusted to match the external provider's live page structure before relying on scraping in production. Official API access is preferable.
+> **Important:** The HTML extraction implementation is currently a template and its selectors must be adjusted to match the external provider's live page structure before relying on scraping in production. Official API access is preferable.
 
-⏱️ Automated Cron Synchronization
+---
+
+# ⏱️ Automated Cron Synchronization
 
 FlyOn includes:
 
+```text
 cron/sync_gozayaan.php
+```
 
 A Linux server can execute the synchronization process periodically using cron.
 
 Example:
 
+```bash
 0 * * * * /usr/bin/php /path/to/FlyOn/cron/sync_gozayaan.php
+```
 
 This example runs the synchronization process once per hour.
 
-Windows/XAMPP users can use Windows Task Scheduler with:
+Windows/XAMPP users can use **Windows Task Scheduler** with:
 
+```text
 C:\xampp\php\php.exe
+```
 
 and execute:
 
+```text
 C:\xampp\htdocs\FlyOn\cron\sync_gozayaan.php
-🌙 Modern User Interface
+```
 
-FlyOn uses Tailwind CSS alongside custom CSS and JavaScript.
+---
+
+# 🌙 Modern User Interface
+
+FlyOn uses **Tailwind CSS** alongside custom CSS and JavaScript.
 
 The interface includes:
 
-responsive layouts
-custom color theme
-Font Awesome icons
-dark mode
-system-theme detection
-locally remembered dark-mode preference
-reusable navigation/footer components
+* responsive layouts
+* custom color theme
+* Font Awesome icons
+* dark mode
+* system-theme detection
+* locally remembered dark-mode preference
+* reusable navigation/footer components
 
 The UI supports both manually selected and system-preferred dark themes.
 
-🔐 Security Features
+---
+
+# 🔐 Security Features
 
 Several security mechanisms have been included in the application architecture.
 
-Password Security
+### Password Security
 
 Passwords are handled using PHP's secure password APIs:
 
+```php
 password_hash()
 password_verify()
-CSRF Protection Utilities
+```
+
+### CSRF Protection Utilities
 
 FlyOn provides functions to generate and verify CSRF tokens.
 
-Prepared Database Queries
+### Prepared Database Queries
 
 PDO prepared statements are used throughout major database operations.
 
-Session Security
+### Session Security
 
 Session configuration includes:
 
-HTTP-only cookies
-cookie-based sessions
-secure-cookie support when HTTPS is active
-Role-Based Access
+* HTTP-only cookies
+* cookie-based sessions
+* secure-cookie support when HTTPS is active
+
+### Role-Based Access
 
 Two primary application roles are supported:
 
+```text
 User
 Admin
+```
 
 Protected administrative pages require appropriate authentication and role state.
 
-Input Handling
+### Input Handling
 
 The project includes reusable utilities for:
 
-sanitizing input
-email validation
-phone validation
-date validation
-Activity Logging
+* sanitizing input
+* email validation
+* phone validation
+* date validation
+
+### Activity Logging
 
 Application events can be logged with:
 
-user
-action
-entity type
-entity ID
-IP address
-user agent
-additional details
-🧠 System Architecture
+* user
+* action
+* entity type
+* entity ID
+* IP address
+* user agent
+* additional details
+
+---
+
+# 🧠 System Architecture
 
 FlyOn follows a modular PHP architecture separating presentation, reusable logic, API operations, administrative functionality, user functionality, booking steps, configuration, and data access.
 
+```mermaid
 flowchart TD
 
     A[Visitor / User] --> B[FlyOn Web Interface]
@@ -436,31 +507,44 @@ flowchart TD
     U --> H
 
     W[Cron Job] --> U
-🛠️ Technology Stack
-Layer	Technology
-Backend	PHP
-Database	MySQL / MariaDB
-Database Access	PDO
-Frontend	HTML5
-Styling	Tailwind CSS
-Custom Styling	CSS
-Client-Side Logic	JavaScript
-Icons	Font Awesome 6
-Web Server	Apache
-Configuration	.env-based settings
-Authentication	PHP Sessions
-External Requests	PHP cURL
-Data Format	JSON
-Scheduled Jobs	Cron / Windows Task Scheduler
-🗄️ Database Design
+```
+
+---
+
+# 🛠️ Technology Stack
+
+| Layer             | Technology                    |
+| ----------------- | ----------------------------- |
+| Backend           | PHP                           |
+| Database          | MySQL / MariaDB               |
+| Database Access   | PDO                           |
+| Frontend          | HTML5                         |
+| Styling           | Tailwind CSS                  |
+| Custom Styling    | CSS                           |
+| Client-Side Logic | JavaScript                    |
+| Icons             | Font Awesome 6                |
+| Web Server        | Apache                        |
+| Configuration     | `.env`-based settings         |
+| Authentication    | PHP Sessions                  |
+| External Requests | PHP cURL                      |
+| Data Format       | JSON                          |
+| Scheduled Jobs    | Cron / Windows Task Scheduler |
+
+---
+
+# 🗄️ Database Design
 
 FlyOn ships with a complete SQL schema located at:
 
+```text
 database/schema.sql
+```
 
 The schema includes application tables and sample data.
 
-Main entities
+## Main entities
+
+```mermaid
 erDiagram
 
     USERS ||--o{ BOOKINGS : creates
@@ -498,25 +582,34 @@ erDiagram
         string adjustment_type
         decimal adjustment_value
     }
-Important database tables
-Table	Purpose
-users	User and administrator accounts
-airlines	Airline information
-airports	Airport and city information
-flights	Flight schedules, prices and availability
-bookings	Customer reservations
-passengers	Passenger information
-seats	Flight seat inventory
-promotions	Promotional codes and discounts
-loyalty	Loyalty points and membership tiers
-notifications	User notification records
-pricing_rules	Dynamic pricing configuration
-reviews	User ratings and reviews
-payments	Payment transaction records
-activity_logs	System/user activity tracking
-flight_sync_logs	Flight synchronization history
-system_settings	System-level configuration
-📁 Project Structure
+```
+
+## Important database tables
+
+| Table              | Purpose                                   |
+| ------------------ | ----------------------------------------- |
+| `users`            | User and administrator accounts           |
+| `airlines`         | Airline information                       |
+| `airports`         | Airport and city information              |
+| `flights`          | Flight schedules, prices and availability |
+| `bookings`         | Customer reservations                     |
+| `passengers`       | Passenger information                     |
+| `seats`            | Flight seat inventory                     |
+| `promotions`       | Promotional codes and discounts           |
+| `loyalty`          | Loyalty points and membership tiers       |
+| `notifications`    | User notification records                 |
+| `pricing_rules`    | Dynamic pricing configuration             |
+| `reviews`          | User ratings and reviews                  |
+| `payments`         | Payment transaction records               |
+| `activity_logs`    | System/user activity tracking             |
+| `flight_sync_logs` | Flight synchronization history            |
+| `system_settings`  | System-level configuration                |
+
+---
+
+# 📁 Project Structure
+
+```text
 FlyOn/
 │
 ├── admin/
@@ -608,111 +701,172 @@ FlyOn/
 ├── index.php
 ├── search.php
 └── README.md
-🔌 API Overview
+```
+
+---
+
+# 🔌 API Overview
 
 FlyOn provides PHP endpoints that return JSON responses for asynchronous application operations.
 
-Flight Search API
+## Flight Search API
+
+```text
 GET /api/search_api.php
+```
 
 Example:
 
+```text
 /api/search_api.php?from=Dhaka&to=Chittagong&departure_date=2026-09-20&passengers=1&class=economy
+```
 
 The endpoint can:
 
-retrieve matching flights
-calculate flight duration
-calculate dynamic prices
-update demand/search counts
-retrieve return flights for round trips
-Airport Search API
+* retrieve matching flights
+* calculate flight duration
+* calculate dynamic prices
+* update demand/search counts
+* retrieve return flights for round trips
+
+---
+
+## Airport Search API
+
+```text
 GET /api/search_airports.php
+```
 
 Used for airport/location search and autocomplete functionality.
 
-Booking API
+---
+
+## Booking API
+
+```text
 /api/booking_api.php
+```
 
 Supported operations include:
 
+```text
 POST   ?action=create
 POST   ?action=update
 GET    ?action=list
 GET    ?action=details
 DELETE booking
+```
 
 Authentication is required.
 
-Payment API
+---
+
+## Payment API
+
+```text
 POST /api/payment_api.php
+```
 
 Handles the booking payment workflow and updates booking/payment records after successful processing.
 
-Notification API
+---
+
+## Notification API
+
+```text
 /api/notification_api.php
+```
 
 Provides notification-related application operations.
 
-⚙️ Installation & Setup
-Prerequisites
+---
+
+# ⚙️ Installation & Setup
+
+## Prerequisites
 
 Before running FlyOn, install:
 
-Apache
-PHP
-MySQL or MariaDB
-PHP PDO MySQL extension
-PHP cURL extension
-a modern web browser
+* Apache
+* PHP
+* MySQL or MariaDB
+* PHP PDO MySQL extension
+* PHP cURL extension
+* a modern web browser
 
 The easiest Windows development environment is:
 
-XAMPP
-WAMP
-Laragon
-1. Clone the Repository
+* **XAMPP**
+* **WAMP**
+* **Laragon**
+
+---
+
+## 1. Clone the Repository
+
+```bash
 git clone https://github.com/MunamRahman/FlyOn---A-Dynamic-Air-Ticketing-System.git
+```
 
 Move into the project directory:
 
+```bash
 cd FlyOn---A-Dynamic-Air-Ticketing-System
+```
 
 For XAMPP, place the project inside:
 
+```text
 C:\xampp\htdocs\
+```
 
 For example:
 
+```text
 C:\xampp\htdocs\FlyOn
-2. Create the Database
+```
 
-Start Apache and MySQL.
+---
+
+## 2. Create the Database
+
+Start **Apache** and **MySQL**.
 
 Open phpMyAdmin:
 
+```text
 http://localhost/phpmyadmin
+```
 
 Import:
 
+```text
 database/schema.sql
+```
 
 Alternatively:
 
+```bash
 mysql -u root -p < database/schema.sql
+```
 
 The script creates:
 
+```text
 flyon_db
+```
 
 and populates the database with initial/sample information.
 
-3. Configure Environment Variables
+---
 
-Create a .env file in the project's root directory.
+## 3. Configure Environment Variables
+
+Create a `.env` file in the project's root directory.
 
 Example:
 
+```env
 # Application
 APP_NAME=FlyOn
 APP_URL=http://localhost/FlyOn
@@ -774,30 +928,46 @@ PLATINUM_THRESHOLD=10000
 # Booking
 SEAT_LOCK_DURATION=600
 BOOKING_CANCELLATION_HOURS=24
+```
 
-Never commit real API keys, database passwords, or payment credentials to GitHub.
+> Never commit real API keys, database passwords, or payment credentials to GitHub.
 
-4. Run the Application
+---
+
+## 4. Run the Application
 
 Visit:
 
+```text
 http://localhost/FlyOn
+```
 
-If the project directory has a different name, update APP_URL accordingly.
+If the project directory has a different name, update `APP_URL` accordingly.
 
-👨‍💼 Demo Administrator
+---
+
+# 👨‍💼 Demo Administrator
 
 The SQL schema includes a development administrator account.
 
+```text
 Email:    admin@flyon.com
 Password: admin123
+```
 
-⚠️ Security Warning: Change or remove this account immediately before deploying the project publicly.
+> ⚠️ **Security Warning:** Change or remove this account immediately before deploying the project publicly.
 
 Admin login:
 
+```text
 http://localhost/FlyOn/admin/login.php
-🔄 Application Flow
+```
+
+---
+
+# 🔄 Application Flow
+
+```mermaid
 sequenceDiagram
 
     actor User
@@ -831,205 +1001,227 @@ sequenceDiagram
 
     Booking->>DB: Confirm booking
     Booking-->>User: Booking confirmation
-🇧🇩 Bangladesh-Focused Sample Dataset
+```
+
+---
+
+# 🇧🇩 Bangladesh-Focused Sample Dataset
 
 The included database seed data contains several Bangladesh aviation examples.
 
-Airlines include
-Biman Bangladesh Airlines
-US-Bangla Airlines
-Novoair
+### Airlines include
+
+* Biman Bangladesh Airlines
+* US-Bangla Airlines
+* Novoair
 
 alongside international carriers such as:
 
-Emirates
-Qatar Airways
-Singapore Airlines
-Turkish Airlines
-Air India
-Bangladesh airports include
-Hazrat Shahjalal International Airport — DAC
-Shah Amanat International Airport — CGP
-Osmani International Airport — ZYL
-Cox's Bazar Airport — CXB
-Jessore Airport — JSR
-Saidpur Airport — SPD
-Barisal Airport — BZL
+* Emirates
+* Qatar Airways
+* Singapore Airlines
+* Turkish Airlines
+* Air India
+
+### Bangladesh airports include
+
+* Hazrat Shahjalal International Airport — **DAC**
+* Shah Amanat International Airport — **CGP**
+* Osmani International Airport — **ZYL**
+* Cox's Bazar Airport — **CXB**
+* Jessore Airport — **JSR**
+* Saidpur Airport — **SPD**
+* Barisal Airport — **BZL**
 
 The schema also contains international airports and sample domestic/international flight records for testing.
 
-💰 Currency & Regional Configuration
+---
+
+# 💰 Currency & Regional Configuration
 
 FlyOn includes formatting support for:
 
-🇧🇩 BDT — ৳
-🇺🇸 USD — $
-🇪🇺 EUR — €
-🇬🇧 GBP — £
-🇮🇳 INR — ₹
+* 🇧🇩 BDT — ৳
+* 🇺🇸 USD — $
+* 🇪🇺 EUR — €
+* 🇬🇧 GBP — £
+* 🇮🇳 INR — ₹
 
 The application timezone defaults to:
 
+```text
 Asia/Dhaka
-🚀 Future Development
+```
+
+---
+
+# 🚀 Future Development
 
 FlyOn provides a strong foundation for further development.
 
 Potential improvements include:
 
-Production SSLCommerz integration
+* [ ] Production SSLCommerz integration
+* [ ] Production Stripe integration
+* [ ] Production PayPal integration
+* [ ] verified external airline/GDS API
+* [ ] real-time flight status
+* [ ] email verification
+* [ ] OTP authentication
+* [ ] live SMS gateway
+* [ ] e-ticket PDF generation
+* [ ] QR-code boarding/ticket verification
+* [ ] automated invoice generation
+* [ ] refund automation
+* [ ] multi-city booking
+* [ ] advanced fare classes
+* [ ] baggage management
+* [ ] airline-specific seat maps
+* [ ] real-time seat inventory
+* [ ] saved travelers
+* [ ] saved payment methods
+* [ ] advanced admin analytics
+* [ ] revenue reporting
+* [ ] flight-delay notifications
+* [ ] Progressive Web App support
+* [ ] mobile application
+* [ ] Docker deployment
+* [ ] automated testing
+* [ ] CI/CD pipeline
 
-Production Stripe integration
+---
 
-Production PayPal integration
-
-verified external airline/GDS API
-
-real-time flight status
-
-email verification
-
-OTP authentication
-
-live SMS gateway
-
-e-ticket PDF generation
-
-QR-code boarding/ticket verification
-
-automated invoice generation
-
-refund automation
-
-multi-city booking
-
-advanced fare classes
-
-baggage management
-
-airline-specific seat maps
-
-real-time seat inventory
-
-saved travelers
-
-saved payment methods
-
-advanced admin analytics
-
-revenue reporting
-
-flight-delay notifications
-
-Progressive Web App support
-
-mobile application
-
-Docker deployment
-
-automated testing
-
-CI/CD pipeline
-
-🎯 Project Objectives
+# 🎯 Project Objectives
 
 FlyOn was designed to demonstrate how several real-world software engineering concepts can work together within one application:
 
-relational database design
-user authentication
-role-based authorization
-session management
-flight inventory management
-multi-stage transactional workflows
-dynamic business rules
-dynamic pricing
-REST-style API design
-external API architecture
-background/scheduled jobs
-payment abstractions
-reusable PHP components
-responsive web design
-administrative dashboards
-⚠️ Development Status
+* relational database design
+* user authentication
+* role-based authorization
+* session management
+* flight inventory management
+* multi-stage transactional workflows
+* dynamic business rules
+* dynamic pricing
+* REST-style API design
+* external API architecture
+* background/scheduled jobs
+* payment abstractions
+* reusable PHP components
+* responsive web design
+* administrative dashboards
 
-FlyOn is primarily an educational and development project.
+---
+
+# ⚠️ Development Status
+
+FlyOn is primarily an **educational and development project**.
 
 Some integrations intentionally contain development-stage or simulated implementations.
 
 Before using FlyOn in a real commercial environment, additional work should be completed for:
 
-payment-provider verification
-live airline inventory integration
-production email/SMS delivery
-comprehensive security auditing
-concurrency testing
-transactional booking guarantees
-automated testing
-rate limiting
-monitoring
-PCI-related payment requirements
-privacy/data-protection compliance
-🤝 Contributing
+* payment-provider verification
+* live airline inventory integration
+* production email/SMS delivery
+* comprehensive security auditing
+* concurrency testing
+* transactional booking guarantees
+* automated testing
+* rate limiting
+* monitoring
+* PCI-related payment requirements
+* privacy/data-protection compliance
+
+---
+
+# 🤝 Contributing
 
 Contributions, suggestions, bug reports, and improvements are welcome.
 
-Recommended workflow
-Fork the repository
-Create a feature branch
+### Recommended workflow
+
+1. Fork the repository
+2. Create a feature branch
+
+```bash
 git checkout -b feature/your-feature
-Commit your changes
+```
+
+3. Commit your changes
+
+```bash
 git commit -m "Add: your feature description"
-Push the branch
+```
+
+4. Push the branch
+
+```bash
 git push origin feature/your-feature
-Open a Pull Request
-🐛 Bug Reports
+```
+
+5. Open a Pull Request
+
+---
+
+# 🐛 Bug Reports
 
 When reporting a bug, please include:
 
-a clear description
-steps to reproduce
-expected behavior
-actual behavior
-PHP version
-MySQL/MariaDB version
-operating system
-browser
-relevant screenshots or logs
-👨‍💻 Maintainer
+* a clear description
+* steps to reproduce
+* expected behavior
+* actual behavior
+* PHP version
+* MySQL/MariaDB version
+* operating system
+* browser
+* relevant screenshots or logs
 
-Munam Rahman
+---
 
-GitHub: @MunamRahman
+# 👨‍💻 Maintainer
+
+**Munam Rahman**
+
+GitHub: [@MunamRahman](https://github.com/MunamRahman)
 
 Repository:
 
-FlyOn — A Dynamic Air Ticketing System
+[FlyOn — A Dynamic Air Ticketing System](https://github.com/MunamRahman/FlyOn---A-Dynamic-Air-Ticketing-System)
 
-📜 License
+---
+
+# 📜 License
 
 A software license has not currently been specified for this repository.
 
 Until a license is added, usage, modification, and redistribution rights should not be assumed beyond what GitHub's Terms of Service permit.
 
-If the project is intended to be open source, consider adding an appropriate license such as MIT, Apache-2.0, or GPL-3.0.
+If the project is intended to be open source, consider adding an appropriate license such as **MIT**, **Apache-2.0**, or **GPL-3.0**.
 
-⭐ Support the Project
+---
+
+# ⭐ Support the Project
 
 If you find FlyOn useful or interesting:
 
-⭐ Star the repository
-🍴 Fork the project
-🐛 Report issues
-💡 Suggest improvements
-🤝 Contribute new features
+* ⭐ Star the repository
+* 🍴 Fork the project
+* 🐛 Report issues
+* 💡 Suggest improvements
+* 🤝 Contribute new features
+
+---
 
 <div align="center">
 
-✈️ FlyOn
-Your journey starts before takeoff.
+## ✈️ FlyOn
 
-Built to explore the engineering behind modern flight-booking systems.
+### Your journey starts before takeoff.
 
-⬆ Back to Top
+**Built to explore the engineering behind modern flight-booking systems.**
 
-</div> FlyOn---A-Dynamic-Air-Ticketing-System
+[⬆ Back to Top](#️-flyon)
+
+</div>
